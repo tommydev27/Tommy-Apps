@@ -372,29 +372,25 @@ background:#4cafef;
       <div style="position: relative;">
         <textarea id="input" placeholder="Ketik atau tempel teks Anda di sini..." style="padding-bottom:40px;"></textarea>
           <div class="copy-alert" id="copyAlert">✅ Berhasil disalin!</div>
-<button onclick="pulse(this)" 
-        style="position:absolute; bottom:25px; right:8px; padding:6px 15px; 
-               background:#8d8d8d99; color:white; border-radius:10px; border:none; 
-               cursor:pointer; transition: transform 0.2s, background 0.2s;">
+<button onclick="pulse(this); clearText()" 
+  style="position:absolute; bottom:25px; right:8px; padding:6px 15px;
+         background:#8d8d8d99; color:white; border-radius:10px; border:none;
+         cursor:pointer; transition: transform 0.2s, background 0.2s;">
   Clear
 </button>
 
 <script>
 function pulse(btn) {
-  // efek detak
   btn.style.transform = "scale(1.2)";
-  // efek warna
   const original = btn.style.background;
-  btn.style.background = "#f00"; // warna saat klik
+  btn.style.background = "#f00";
   setTimeout(() => {
     btn.style.transform = "scale(1)";
-    btn.style.background = original; // kembalikan warna
+    btn.style.background = original;
   }, 100);
 }
 </script>
-
       </div>
-
       <div class="tools">
         <button onclick="hapusDuplikat()">Hapus Duplikat</button>
         <button onclick="hapusSpasi()">Hapus Spasi</button>
@@ -402,7 +398,6 @@ function pulse(btn) {
         <button onclick="gandakanTeks()">Gandakan Teks &nbsp; +</button>
         <button onclick="copyTeks()" style="background: #329c4b;">Copy</button>
       </div>
-
       <div class="stats-bottom">
         <div class="box">
           <div class="row">
@@ -417,9 +412,6 @@ function pulse(btn) {
       </div>
     </main>
   </div>
-
-
-
   <script>
     const input = document.getElementById("input");
     const char = document.getElementById("char");
@@ -522,11 +514,9 @@ document.getElementById("unicodeBadge").addEventListener("click", () => {
 });
   </script>
   </section>
+  
 <section id="block-galeri" class="block">
     <div class="container" style="padding: 10px;">
-
-
-
   <style>
     :root {
       --gap: 8px;
@@ -735,7 +725,11 @@ function buatCard(ch, high, low){
   card.appendChild(copyBtn);
   grid.appendChild(card);
 }
-
+clearBtn.addEventListener('click', ()=>{ 
+  input.value = ''; 
+  grid.innerHTML = '';
+  info.textContent = 'Dikosongkan.';
+});
 
   runBtn.addEventListener('click', ()=>{ 
     showCharacters(parseHighCodes(input.value)); 
@@ -764,9 +758,8 @@ darkModeBtn.addEventListener("click", () => {
   });
 });
 </script>
-
-
 </div>
+
 </section>
 <!-- NAVIGASI BAWAH -->
 <section id="block-keyboard" class="block" tabindex="0">
@@ -859,13 +852,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
-
-
-
   </div>
+  
 </section>
-
 <section id="block-glitch" class="block" tabindex="0">
   <div class="container">
     <style>
