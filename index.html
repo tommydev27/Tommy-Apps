@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="pwKvYalfLxSFwpDlCsan4yS_mEsUdJvUDrI2wKiIHXk" />
+    
+    <meta property="og:title" content="Tommy Website">
+    <meta property="og:description" content="Create stunning AI-generated images with ease using Tommy APP.">
+    <meta property="og:image" content="https://i.postimg.cc/wM14G6Fw/large-7-2.png">
+    <meta property="og:url" content="https://tommydev27.github.io/UnicodeTM/">
+    <meta property="og:type" content="website">
+    <meta property="fb:app_id" content="1245016886587008">
+    
+    <title>Tommy Website App</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v5/y2/l/0,cross/nC2XYYUISfm.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v5/y8/l/0,cross/Z39OoPuXzgz.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v5/yT/l/0,cross/RYoQlJMNiM3.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://static.xx.fbcdn.net/rsrc.php/v5/yv/l/0,cross/VraZqV-tU8r.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Questrial&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FK1EY26W82"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-FK1EY26W82');
+    </script>
+</head>
+
+<style>
+body {
+  margin: 0;
+  font-family: Questrial;
+  background: #f9f9f9;
+  padding-top: 60px; 
+  padding-bottom: 80px; 
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* HEADER */
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 5px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+body.dark .header-fixed {
+    border-bottom: 1px solid red;
+    background: #222;
+}
+/* BLOK KONTEN */
+section.block {
+  padding: ;
+}
+
+.container {
+  width: 100%;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.badge {
+  font-size: 13px;
+  color: #fff;
+  background: #4a91ea;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+
+/* TEXTAREA */
+textarea {
+  width: 100%;
+  height: 250px;
+  font-family: Monospace;
+  padding: 10px;
+  background: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+  resize: none;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: 10px 0 15px;
+}
+
+/* TOOLS */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tools button {
+  flex: 1;
+  min-width: 100px;
+  padding: 6px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: transform 0.1s ease;
+}
+.tools button:hover {
+  transform: scale(1.05);
+  background: #1ab503;
+}
+
+
+.block { display: none; }
+.block.active { display: block; }
+
+.nav-wrap {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 8px 0;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  flex: 1; /* setiap tombol ambil porsi lebar sama */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #65676b;
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.nav-btn i {
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+.nav-btn.active {
+  color: #007bff;
+}
+
+.nav-btn.active { color: #1877f2; }
+.nav-btn i { display: block; font-size: 20px; }
+.nav-btn small { display: block; font-size: 10px; margin-top: 2px; }
+
+
+/* MODE GELAP */
+body.dark {
+  background: #000;
+  color: #00ff00;
+}
+
+body.dark textarea {
+  background: #333;
+  color: #00ff00;
+  border-color: #0f0;
+}
+
+body.dark .container,
+body.dark .stat-box,
+body.dark .item {
+  background: #111;
+  border-color: #0f0;
+  color: #00ff00;
+}
+
+body.dark .tools button {
+  background: linear-gradient(180deg, #333, #002600);
+  color: #00ff00;
+}
+
+body.dark .tools button:hover {
+  background: linear-gradient(180deg, #333, #003000);
+}
+
+body.dark #darkModeBtn {
+  background: #0f0;
+  color: #000;
+}
+
+
+.stats-top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.stat-box {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.stat-number { margin-top: -4px; }
+
+textarea {
+  width: 100%;
+  height: 170px;
+  margin: 10px 0;
+  font-family: Monospace;
+  padding: 10px;
+  background: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+  resize: none;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tools button {
+  flex: 1;
+  min-width: 100px;
+  padding: 6px;
+background:#4cafef; 
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: transform 0.1s ease;
+}
+
+.tools button:hover {
+  transform: scale(1.05);
+  color: #444;
+  background:  #cecfd1;
+}
+
+.copy-alert {
+  position: absolute;
+  bottom: 50px;
+  right: 90px;
+  background: #1ab503;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px) scale(0.9);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.copy-alert.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.stats-bottom .box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats-bottom .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stats-bottom .item {
+  flex: 1;
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.stats-bottom .item p:first-child {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.stats-bottom .item p:last-child {
+  font-size: 1.2em;
+}
+
+</style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="header-fixed">
+<div class="tommy" style="padding: 0px 0px; font-family: normal;">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<user style="display:inline-block; font-size:13px;  font-weight:900; letter-spacing:1.3px; margin:0; line-height:1.2; position:relative;">
+  <user style="display:inline-block; transform: scaleX(1.1) scaleY(0.8); transform-origin:center;">Tommy website</user>
+  <user style="position:absolute; bottom:0; left:-5px; width:calc(100% + 0px); border-bottom:0.5px solid #444;"></usee>
+</user>
+
+&nbsp; <svg xmlns="http://www.w3.org/2000/svg" fill="#4790fb" width="15" height="15" viewBox="0 0 30 30" style="transform: translateY(5px);"> <path fill-rule="evenodd" clip-rule="evenodd" d="M14.201 1.122a1 1 0 0 1 1.332.357l1.307 2.138 2.506.063a1 1 0 0 1 .974.975l.063 2.505 2.139 1.307a1 1 0 0 1 .356 1.332L21.68 12l1.198 2.201a1 1 0 0 1-.357 1.332l-2.138 1.307-.063 2.506a1 1 0 0 1-.974.974l-2.506.063-1.307 2.139a1 1 0 0 1-1.332.356L12 21.68l-2.201 1.198a1 1 0 0 1-1.332-.357L7.16 20.383l-2.506-.063a1 1 0 0 1-.974-.974l-.063-2.506-2.138-1.307a1 1 0 0 1-.357-1.332L2.32 12 1.122 9.799a1 1 0 0 1 .357-1.332L3.617 7.16l.063-2.505a1 1 0 0 1 .974-.975l2.506-.063L8.467 1.48A1 1 0 0 1 9.8 1.122L12 2.32l2.201-1.198zm2.44 9.146a1 1 0 1 0-1.281-1.536l-.067.055a43.003 43.003 0 0 0-4.852 4.74l-1.734-1.734a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.475-.067l.056-.067a41 41 0 0 1 5.25-5.25l.066-.055z"></path></svg></user><p style="margin:4px 0 0 0; line-height:1.2;"><user style="font-size:13px; font-weight:400; letter-spacing:5px; display:inline-block; transform: scaleX(1.1) scaleY(0.8); transform-origin:center;">from &nbsp;&nbsp;<user style="display:inline-block; font-size:12px; font-weight:400; transform: scaleX(1.9) scaleY(1.5); color:#4790fb; text-shadow:0.5px 0 0 currentColor, -0.5px 0 0 currentColor;"> <i class='fab fa-gg'></i>TM</user>
+</div>
+<span style="position:absolute; right:130px; font-size:12px; font-weight:100; color:#4790fb; transform: scaleX(1.8) scaleY(3.8); text-shadow:0.1px 0 0 currentColor, -0.9px 0 0 currentColor; margin-top: 10px; letter-spacing:1px;">
+  Unicreate</span><span style="position:absolute; right:90px; font-size:22px; font-weight:100; color:#4790fb; text-shadow:0.1px 0 0 currentColor, -0.0px 0 0 currentColor; margin-top: 10px;">+</span>
+   <button id="darkModeBtn" style="position:absolute;  padding:5px;border:none;border-radius:50px;cursor:pointer;background:#222;color:#0f0; font-size: 11px; right:52px; ">🌙 </button>
+</div>
+
+
+  <!-- BLOK KONTEN -->
+  <section id="block-karakter" class="block active" tabindex="0">
+    <div class="container" style="  padding: 10px;">
+
+   <header>
+  <h1>Penghitung Karakter</h1>
+<span class="badge" id="unicodeBadge" style="cursor:pointer;">Unicode Character</span>
+</header>
+    <main>
+      <div class="stats-top">
+        <div class="stat-box"><p>Kata</p><p class="stat-number"><strong id="word">0</strong></p></div>
+        <div class="stat-box"><p>Karakter</p><p class="stat-number"><strong id="char">0</strong></p></div>
+        <div class="stat-box"><p>Paragraf</p><p class="stat-number"><strong id="para">0</strong></p></div>
+        <div class="stat-box"><p>Kalimat</p><p class="stat-number"><strong id="sent">0</strong></p></div>
+      </div>
+
+      <div style="position: relative;">
+        <textarea id="input" placeholder="Ketik atau tempel teks Anda di sini..." style="padding-bottom:40px;"></textarea>
+          <div class="copy-alert" id="copyAlert">✅ Berhasil disalin!</div>
+<button onclick="pulse(this)" 
+        style="position:absolute; bottom:25px; right:8px; padding:6px 15px; 
+               background:#8d8d8d99; color:white; border-radius:10px; border:none; 
+               cursor:pointer; transition: transform 0.2s, background 0.2s;">
+  Clear
+</button>
+
+<script>
+function pulse(btn) {
+  // efek detak
+  btn.style.transform = "scale(1.2)";
+  // efek warna
+  const original = btn.style.background;
+  btn.style.background = "#f00"; // warna saat klik
+  setTimeout(() => {
+    btn.style.transform = "scale(1)";
+    btn.style.background = original; // kembalikan warna
+  }, 100);
+}
+</script>
+
+      </div>
+
+      <div class="tools">
+        <button onclick="hapusDuplikat()">Hapus Duplikat</button>
+        <button onclick="hapusSpasi()">Hapus Spasi</button>
+        <button onclick="beriSpasi()">Tambah Spasi</button>
+        <button onclick="gandakanTeks()">Gandakan Teks &nbsp; +</button>
+        <button onclick="copyTeks()" style="background: #329c4b;">Copy</button>
+      </div>
+
+      <div class="stats-bottom">
+        <div class="box">
+          <div class="row">
+            <div class="item"><p>Karakter Tanpa Spasi</p><p id="charNoSpace">0</p></div>
+            <div class="item"><p>Kata Unik</p><p id="unique">0</p></div>
+          </div>
+          <div class="row">
+            <div class="item"><p>Perkiraan Waktu Baca</p><p id="read">0 mnt</p></div>
+            <div class="item"><p>Perkiraan Waktu Bicara</p><p id="speak">0 mnt</p></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+
+  <script>
+    const input = document.getElementById("input");
+    const char = document.getElementById("char");
+    const word = document.getElementById("word");
+    const para = document.getElementById("para");
+    const sent = document.getElementById("sent");
+    const charNoSpace = document.getElementById("charNoSpace");
+    const unique = document.getElementById("unique");
+    const read = document.getElementById("read");
+    const speak = document.getElementById("speak");
+    const copyAlert = document.getElementById("copyAlert");
+
+    function countGraphemes(text) {
+      return Array.from(text).length;
+    }
+
+    function updateStats() {
+      const text = input.value;
+      char.textContent = countGraphemes(text);
+      charNoSpace.textContent = countGraphemes(text.replace(/\s/g, ''));
+
+      const words = text.trim().match(/\b\w+\b/g) || [];
+      word.textContent = words.length;
+
+      const paras = text.split(/\n+/).filter(p => p.trim() !== '');
+      para.textContent = paras.length;
+
+      const sentences = text.split(/[.!?]+/).filter(s => s.trim() !== '');
+      sent.textContent = sentences.length;
+
+      const uniqueWords = [...new Set(words.map(w => w.toLowerCase()))];
+      unique.textContent = uniqueWords.length;
+
+      read.textContent = Math.ceil(words.length / 200) + " mnt";
+      speak.textContent = Math.ceil(words.length / 130) + " mnt";
+    }
+
+    input.addEventListener("input", updateStats);
+    input.addEventListener("paste", () => setTimeout(updateStats, 0));
+
+    function clearText() {
+      input.value = "";
+      updateStats();
+    }
+
+    // 🔹 1. Hapus Duplikat
+    function hapusDuplikat() {
+      const teks = input.value;
+      let hasil = "";
+      for (const char of teks) {
+        if (!hasil.includes(char)) hasil += char;
+      }
+      input.value = hasil;
+      updateStats();
+    }
+
+    // 🔹 2. Hapus Spasi
+    function hapusSpasi() {
+      input.value = input.value.replace(/\s+/g, "");
+      updateStats();
+    }
+
+    // 🔹 3. Gandakan Teks
+    function gandakanTeks() {
+      const teks = input.value;
+      if (!teks.trim()) return;
+      const jumlah = prompt("Gandakan berapa kali?", "2");
+      const n = parseInt(jumlah);
+      if (!isNaN(n) && n > 0) {
+        input.value = teks.repeat(n);
+        updateStats();
+      }
+    }
+
+    // 🔹 4. Beri Spasi antar karakter
+    function beriSpasi() {
+      const teks = input.value;
+      input.value = Array.from(teks).join(" ");
+      updateStats();
+    }
+
+    // 🔹 5. Copy teks + animasi notifikasi
+    function copyTeks() {
+      const teks = input.value;
+      if (!teks.trim()) return;
+      navigator.clipboard.writeText(teks).then(() => {
+        copyAlert.classList.add("show");
+        setTimeout(() => {
+          copyAlert.classList.remove("show");
+        }, 1500);
+      });
+    }
+    
+    document.getElementById("darkModeBtn").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+
+document.getElementById("unicodeBadge").addEventListener("click", () => {
+  window.open("https://tommydev27.github.io/unicode-explorerTM/", "_blank");
+});
+  </script>
+  </section>
+<section id="block-galeri" class="block">
+    <div class="container" style="padding: 10px;">
+
+
+
+  <style>
+    :root {
+      --gap: 8px;
+      
+    }
+
+    /* container */
+    .kc-container {
+      padding: 0px;
+    }
+
+    /* baris input */
+    .kc-row {
+      display: flex;
+      gap: var(--gap);
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .kc-input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+    }
+
+    .kc-btn {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 0;
+      background: #65676b;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* grid karakter */
+    .kc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .kc-card {
+      border: 0.5px solid #96a1f5;
+      border-radius: 8px;
+      padding: 5px;
+      text-align: center;
+      user-select: none;
+    }
+    
+    .kc-char {
+      font-size: 34px;
+      line-height: 1.1;
+    }
+
+    .kc-code {
+      font-size: 5px;
+      color: #444;
+      margin-top: 6px;
+      padding: 0px 10px;
+      text-align: left;
+    }
+
+    .kc-note {
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .kc-small {
+      font-size: 12px;
+    }
+
+    .kc-copy {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 0;
+      background: #e8eefc;
+      cursor: pointer;
+    }
+
+  </style>
+<div class="kc-app">
+  <div class="kc-container">
+
+
+  <div id="KC_APP" class="kc-container">
+    <m style=" font-weight:bold;">Code Character</m>
+    <p>
+    <user style=" font-size:12px; margin-top:-20px;"> 
+Cari kelompok karakter kode contoh (0xDB00 atau 0x00) karakter run untuk tampilkan kelompok karakter
+
+</user>
+
+    <div class="kc-row">
+      <input id="kc-input" class="kc-input" placeholder="Masukkan kode, contoh: 0xD80C 0xDE22 atau 0xBD, pisah pakai koma" />
+      <button id="kc-run" class="kc-btn">Run</button>
+    </div>
+
+    <div class="kc-row">
+      <label class="kc-small">Limit per blok (0 = semua 1024):&nbsp;</label>
+      <input id="kc-limit" type="number" min="0" step="1" value="0" style="width:80px;padding:6px;border:1px solid #bbb;border-radius:6px" />
+      <div style="flex:1"></div>
+      <button id="kc-clear" class="kc-btn" style="background:#981111">Clear</button>
+    </div>
+
+    <div id="kc-outputInfo" class="kc-note">
+      Masukkan kode high-surrogate, lalu tekan Run. Contoh: <code>0xD80C 0xDE22, 0xBD</code>
+    </div>
+
+    <div id="kc-grid" class="kc-grid" aria-live="polite"></div>
+  </div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const input = $('kc-input');
+  const runBtn = $('kc-run');
+  const grid = $('kc-grid');
+  const info = $('kc-outputInfo');
+  const limitInput = $('kc-limit');
+  const clearBtn = $('kc-clear');
+
+  function parseHighCodes(text){
+    return text
+      .split(',')
+      .map(s => s.trim())
+      .filter(Boolean)
+      .map(s => {
+        if(/^0x/i.test(s)) s = s.slice(2);
+        const num = parseInt(s,16);
+        return Number.isNaN(num) ? null : num;
+      })
+      .filter(n => n !== null);
+  }
+
+  function padHex(n){ 
+    return '0x' + n.toString(16).toUpperCase().padStart(4,'0'); 
+  }
+
+  function showCharacters(codeList){
+    grid.innerHTML = '';
+    if(!codeList.length){ 
+      info.textContent = 'Tidak ada kode valid.'; 
+      return; 
+    }
+    const limit = Math.max(0, Number(limitInput.value) || 0);
+    info.textContent = `Menampilkan ${codeList.length} kode.`;
+
+    codeList.forEach(code => {
+      // jika kode high-surrogate (0xD800–0xDBFF)
+      if(code >= 0xD800 && code <= 0xDBFF){
+        const lowStart = 0xDC00;
+        const lowEnd = 0xDFFF;
+        const total = lowEnd - lowStart + 1;
+        const count = limit === 0 ? total : Math.min(limit, total);
+
+        for(let i=0;i<count;i++){
+          const low = lowStart + i;
+          const ch = String.fromCharCode(code, low);
+          buatCard(ch, code, low);
+        }
+      } else {
+        // karakter tunggal
+        const ch = String.fromCharCode(code);
+        buatCard(ch, code);
+      }
+    });
+
+    if(grid.firstChild) grid.firstChild.scrollIntoView({behavior:'smooth'});
+  }
+
+function buatCard(ch, high, low){
+  const card = document.createElement('div');
+  card.className = 'kc-card';
+
+  const chEl = document.createElement('div');
+  chEl.className = 'kc-char native-text';
+  chEl.textContent = ch;
+
+  const copyBtn = document.createElement('button');
+  copyBtn.className='kc-copy';
+  copyBtn.textContent='Salin';
+  copyBtn.title='Klik untuk menyalin karakter ke clipboard';
+  copyBtn.addEventListener('click', ()=>{
+    navigator.clipboard && navigator.clipboard.writeText(ch).then(()=>{
+      copyBtn.textContent='Tersalin';
+      setTimeout(()=>copyBtn.textContent='Salin',800);
+    }).catch(()=>{
+      const ta=document.createElement('textarea');
+      ta.value=ch; document.body.appendChild(ta); ta.select();
+      try{ 
+        document.execCommand('copy'); 
+        copyBtn.textContent='Tersalin'; 
+        setTimeout(()=>copyBtn.textContent='Salin',800);
+      }catch(e){ alert('Gagal menyalin') }
+      ta.remove();
+    });
+  });
+
+  // tambahkan hanya ikon dan tombol
+  card.appendChild(chEl);
+  card.appendChild(copyBtn);
+  grid.appendChild(card);
+}
+
+
+  runBtn.addEventListener('click', ()=>{ 
+    showCharacters(parseHighCodes(input.value)); 
+  });
+  input.addEventListener('keyup', e=>{ 
+    if(e.key==='Enter') runBtn.click(); 
+  });
+  clearBtn.addEventListener('click', ()=>{ 
+    grid.innerHTML=''; 
+    info.textContent='Dikosongkan.'; 
+  });
+
+  input.value='0xD80C 0xDD7D';
+})();
+
+// Dark mode tombol
+const darkModeBtn = document.getElementById("darkModeBtn");
+darkModeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  document.querySelectorAll("#kc-grid .kc-code, #kc-grid .kc-char").forEach(el => {
+    if (document.body.classList.contains("dark-mode")) {
+      el.style.color = "#44d13e";
+    } else {
+      el.style.color = "#444";
+    }
+  });
+});
+</script>
+
+
+</div>
+</section>
+<!-- NAVIGASI BAWAH -->
+<section id="block-keyboard" class="block" tabindex="0">
+  <div class="container" style="padding: 10px;">
+
+<style>
+:root { --kc-cols: 10; --kc-cell: 36px; --kc-gap: 6px; }
+
+.kc-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #444;
+  padding: 8px;
+  border: 1px solid #1877f2;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .kc-wrapper .native-text .icon {
+  color: #03ec19 !important;
+}
+
+.kc-wrapper .native-text {
+  display: grid;
+  grid-template-columns: repeat(var(--kc-cols), var(--kc-cell));
+  gap: var(--kc-gap);
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.kc-wrapper .native-text .icon {
+  width: var(--kc-cell);
+  height: var(--kc-cell);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(171,207,253);
+  border-radius: 4px;
+  box-sizing: border-box;
+  user-select: text;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+@media (max-width:420px){
+  :root { --kc-cols: 8; --kc-cell: 35px; }
+  .kc-wrapper .native-text { font-size: 25px; }
+}
+</style>
+
+<div class="kc-wrapper">
+  <div class="native-text"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const native = document.querySelector('.kc-wrapper .native-text');
+  if (!native) return;
+
+  // Rentang surrogate pair Private Use Area-A
+  const highList = [0xDB86];
+  const lowList = [];
+  for (let lo = 0xDC00; lo <= 0xDFFF; lo++) {
+    lowList.push(lo);
+  }
+
+  // Contoh icon utama
+  const char = String.fromCodePoint(0xF0047);
+  const span = document.createElement('span');
+  span.className = 'icon';
+  span.textContent = char;
+  native.appendChild(span);
+
+  // Tampilkan kombinasi surrogate pair (batas max 600)
+  let count = 0;
+  const max = 600;
+  for (const hi of highList) {
+    for (const lo of lowList) {
+      const ch = String.fromCharCode(hi, lo);
+      const span = document.createElement('span');
+      span.className = 'icon';
+      span.textContent = ch;
+      native.appendChild(span);
+      count++;
+      if (count >= max) return;
+    }
+  }
+});
+</script>
+
+
+
+
+  </div>
+</section>
+
+<section id="block-glitch" class="block" tabindex="0">
+  <div class="container">
+    <style>
+#block-glitch iframe {
+  width: 100%;
+  height: 100vh;
+  border: none;
+}
+</style>
+    <iframe src="https://tommydev27.github.io/Multi-Keyboartm/" width="100%" height="400" frameborder="0" loading="lazy"></iframe>
+  </div>
+</section>
+<!-- SECTION -->
+
+
+<section id="block-emoji" class="block">
+    <div class="container" style="padding: 0px;">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+  <style>
+
+.loader {
+    display: none;
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #03b90a;
+    width: 25px;
+    height: 25px;
+    margin: 20px auto;
+    animation: spin 1s linear infinite;
+}
+
+#image-container img {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.image-slider-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  background-color: #ecf0f1;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.image-slider {
+  display: flex;
+  gap: 10px;
+  margin-top: 0px;
+}
+
+.slider-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.slider-image:hover {
+  transform: scale(1.03);
+  transition: transform 0.1s ease;
+}
+
+.gallery {
+  list-style-type: none;
+  padding: 0;
+}
+
+.gallery-item {
+  margin-bottom: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gallery-item h3 {
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+.gallery-item p {
+  font-size: 15px;
+  color: #555;
+}
+
+.prompt-list {
+  font-size: 0.9em;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.prompt-list ul {
+  margin-top: 10px;
+}
+
+
+.quick-links a {
+  color: #00c853;
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 12px;
+}
+
+.quick-links a:hover {
+  color: #ff5722;
+}
+
+.social-media {
+  display: flex;
+  gap: 23px;
+}
+
+.social-icon {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 12px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  background-color: #ff5722;
+  border-color: #ff5722;
+}
+
+
+.copyright {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+
+.unique-image-container {
+  margin-top: 0px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+img.unique-generated-image {
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+input[type="text"], select, button {
+  padding: 3px;
+  font-size: 13px;
+}
+
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+#b2 {
+  font-size: 13px;
+  margin-right: 5px;
+  width: 10px;
+  text-align: right;
+}
+
+#p2 {
+  font-size: 13px;
+  margin: 0;
+  flex: 1;
+}
+
+.native-text {
+  font-family: 'Segoe UI Symbol', 'Noto Emoji', sans-serif;
+}
+
+#loading-screen1 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999 !important;  /* pastikan loading screen tetap di atas */
+    animation: fadeOut 0.95s forwards 0.95s;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.loader1 {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 6px solid rgb(240,240,240);
+    border-top: 6px solid #cfcfcf;
+    animation: spin 0.6s linear infinite;
+    display: block !important;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  padding: 20px 0;
+  border-top: 1px solid #ddd;
+}
+
+.footer-links a {
+  color: #0078d4;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.verified-name {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.verified-name i {
+  color: #1da1f2; /* biru khas centang verifikasi */
+  font-size: 16px;
+}
+
+      </style>
+
+</head>
+<body>
+
+<div class="unique-image-container">
+<div class="verified-name">
+  <span class="name">Create Image
+  <i class="fab fa-earlybirds"></i>
+  &nbsp;
+<foot style="font-size: 12px; color:#444;  font-family: 'Courier New', monospace;
+">
+Design • Tommy V0.1.0 ⋯
+</foot>
+    </div>
+        </div>
+          <p style="font-size: 13px; margin-left: 8px; font-family: Questrial; margin-top:-8px;">
+         Gratis Buat gambar. jika terjadi error stop lanjut lagi setelah pembaruan beberapa saat
+          </p><div style="padding: 10px;">
+          <textarea id="uniquePromptInput" class="unique-prompt-input"
+          style="width: 100%; 
+          height: 20vh;
+          border: 1px solid #4fb4ffe0; border-radius: 5px; font-size: 14px;
+          "
+          placeholder="Tulis deskripsi kreatif Anda di sini..."></textarea>
+          </div><div class="unique-image-container">  <h3 style=" font-size: 15px; color: #777; font-size: 16px; margin-top: -8px; font-family: Questrial;">
+          Image displayed <i style="margin-left: 0px; font-size: 14px; color: #028e33f9;" class="fab fa-slack"></i>
+          </h3><img id="uniqueGeneratedImage" class="unique-generated-image" alt="">
+<div id="loader" class="loader"></div>
+<div class="scroll-container"></div>
+          <div id="downloadTextContainer" style="display: none; text-align: center; font-size: 14px; font-weight: bold; color: #333; margin-top: 10px;"></div>
+          <div><select id="uniqueHeightInput" class="unique-height-input" 
+        style="font-size: 15px; padding: 5px; border-radius: 8px; font-weight: bold; color: #777;">
+  <option value="200">200Px sampul</option>
+  <option value="300">300Px sampul</option>
+  <option value="400">400Px</option>
+  <option value="500">500Px (Persegi)</option>
+  <option value="600">600Px</option>
+  <option value="700">700Px</option>
+  <option value="800">800Px</option>
+</select><button id="uniqueGenerateBtn" class="unique-generate-btn"
+          style="color: #fff; border: none; border-radius: 8px; font-size: 14px; padding: 8px; cursor: pointer; margin-top: 0px; font-weight: bold; margin-left: 10px; background:#82a6ec;">Generate <i style="margin-left: 5px; font-size: 15px; color: #ffd;" class="fas fa-sync"></i></button></div><div id="preset-images" style="margin-top: 10px;"><h3 style="color: #777; font-size: 15px; margin-bottom: 10px; font-family:Questrial;">
+          Gambar Preset klik untuk buat ⇆ Scrollbar
+          </h3></div><div class="image-slider-container"><div class="image-slider">
+          <img src="https://i.postimg.cc/9XJM71Mz/download-2-25.jpg"
+          alt="Gambar 1" class="slider-image"
+          data-prompt="A menacing male anime character with messy white hair and glowing red eyes, his mouth a stitched, grinning skull pattern. He is shirtless, covered in intricate black tattoos, with a large white skull emblem on his stomach. He wears a black open jacket and black pants held up by a belt with silver chains. He is holding a katana sword over his shoulder. The background is a dark, futuristic cityscape with surreal, glowing skull-like structures."><img src="https://i.postimg.cc/LsDKfjT8/download-2-26.jpg" alt="Gambar 4" class="slider-image" data-prompt="A stylish male anime character wearing a black hoodie with the hood up and a black face mask, obscuring most of his face. He has intricate tattoos on both arms and a red beaded necklace with a pendant. He is wearing a black t-shirt with a red tribal design and a black jacket over it, along with black pants with a white drawstring and side pockets. Two fierce white tigers with blue eyes are perched on his shoulders. The background is a neon-lit futuristic city street at night, with glowing Japanese signs.">
+          <img src="https://i.postimg.cc/Gp1KyQn5/download-2-27.jpg" alt="Gambar 5" class="slider-image" data-prompt="A male anime character, resembling Kakashi Hatake, with spiky white hair and a black face mask, holding a white and red Kitsune mask. He wears a white jacket with red accents and intricate red rope details, along with a black headband and black gloves. His outfit includes white pants, and there are additional red and black elements around his waist and arms. The background features chaotic, broken structures with white, gray, and splashes of vibrant red, creating a dynamic, artistic setting.">
+          <img src="https://i.postimg.cc/Qt8MBnCN/download-2-28.jpg" alt="Gambar 5" class="slider-image" data-prompt="A dynamic, vertical, full-body shot of Goku from Dragon Ball in his Ultra Instinct form. His hair glows with an intense white-blue aura. His upper body is muscular, and he wears a tattered blue gi and red wristbands. His body is surrounded by a powerful, multi-colored aura of blue, purple, and red, with glowing particles and streaks of light. His face is serene and focused, with his eyes appearing silver. The background is a dark void with bright blue energy streaks.">
+
+
+          <img src="https://iili.io/2Qc1E0J.png" alt="prompt" class="slider-image" data-prompt="A young man sits on a large blue Facebook logo, wearing a black jacket with a blue hoodie, a white t-shirt and modern sneakers. The background clearly displays the Facebook profile page with visible details such as profile picture, name, icon, and layout. The artistic style is realistic about the man and his background, ensuring the Facebook profile page reads clearly and in detail.">
+          <img src="https://iili.io/2Qcgg7p.png" alt="prompt" class="slider-image" data-prompt="A majestic eagle with detailed golden and bronze feathers, wings fully spread, and a fierce expression. Below the eagle is a luxurious ornamental banner with intricate swirls and floral designs in gold and teal tones. The background is a dark gradient, emphasizing the metallic and elegant details of the artwork. The style is highly detailed and realistic, with a royal and decorative theme.">
+          <img src="https://iili.io/2QcQs19.png" alt="prompt" class="slider-image" data-prompt="A handsome Korean man with sharp facial features, styled black hair, and a confident expression, wearing a sleek black outfit. His back is adorned with a vibrant, highly detailed 3D dragon tattoo in shades of black and red, with lifelike textures and glowing accents. The tattoo appears to almost emerge from his skin, creating a dynamic effect. The background is brightly lit with a modern, urban ambiance, featuring warm, natural lighting and clear details of an evening street scene, ensuring a vibrant and balanced composition with all elements clearly visible.">
+          <img src="https://iili.io/2QcnL8J.png" alt="prompt" class="slider-image" data-prompt="FotoRealistick, A regal and vibrant fantasy-style logo featuring two fierce white tigers with glowing orange eyes, positioned symmetrically around a circular centerpiece. The lions have detailed fur patterns and an intense expression, with golden decorative elements accentuating their elegance. Above the circle, add a golden crown with radiant wings and a central jewel. Surround the design with white floral decorations, vibrant red-and-white ribbons, and luminous pink lightning effects for a dynamic and powerful look. Use a polished gold-and-silver color scheme combined with bright accents to highlight the intricate details, set against a gray background to enhance the contrast.">
+
+          <img src="https://iili.io/2LjendN.png" alt="prompt" class="slider-image" data-prompt="FotoRealistic, Wanita korea cantik wajah menghadap penonton, dengan tubuh mengenakan kostum switer hody bertopi, lengkap Punggungnya dihiasi cangkang siput besar yang, dengan tekstur kerang melingkar. Antena kecil tumbuh di atas topi hody, menambah elemen seperti siput. Karakter ini berjongkok di atas lanskap hutan alien yang dipenuhi lumut hijau, jamur bercahaya, dan tumbuhan eksotis. Latar belakangnya menampilkan pemandangan dengan yang terang serta formasi batuan yang menjulang, menciptakan suasana realistick hd."><img src="https://iili.io/2rBfSKF.png" alt="spider-man" class="slider-image" data-prompt="Create a hyper-realistic image of Spider-Man wearing a futuristic, shiny white robot suit, designed with intricate metallic details and glowing blue accents. He stands confidently in the foreground. Behind him, a large, highly detailed Transformer-like robot sits in a defensive pose, with a reflective metallic coating. The scene is set in a futuristic city at dusk, with warm and cool lighting providing realistic shading of the characters. Make sure textures, proportions and lighting are photorealistic"><img src="https://iili.io/2LW454j.png" alt="prompt" class="slider-image" data-prompt="Foto-realistick, Gambarkan seorang hacker anonymous memegang (playing card joker), di lingkungan komputer teknologi mengalirkan cahaya ">
+          <img src="https://iili.io/2Lx26hl.png" alt="prompt" class="slider-image" data-prompt="beautiful owl with long colorful feathers, perched on a cherry tree, with a snow mountain as a background, a cool view with the light of the wind flowing beautiful neon colors">
+          </div>
+     </div>
+     <p></p>
+          <h style="color: #555; font-family:Questrial; font-size:18px;">Buat gambar dengan klik gambar Preset atau bisa juga ketikan prompt di teks area menurut imajinasimu sendiri</h>
+    <p style="color: white; font-family:Questrial; background:#555; padding:5px; border-radius:8px; font-size:12px;"> Sebagian alat belum berkeja dengan normal masih banyak mengalami error. untuk pembuatan gambar AI kami menggunakan alat dari pollinations AI untuk tahap uji coba dan banyak di gunakan oleh para Developer lain untuk tes uji coba web, namun untuk app rancang desain sendiri dan website masih dalam tahap pengembangan. <br></br> </p>
+<footer>
+  <div class="footer-links">
+    <a href="/privacy">Privasi</a> | 
+    <a href="/policy">Kebijakan Konten</a> | 
+    <a href="/terms">Ketentuan Penggunaan</a> | 
+    <a href="/settings">Pengaturan</a> | 
+    <a href="/feedback">Umpan Balik</a>
+  </div>
+  <p>Design: Tommy App v0.1.0 © 2023</p>
+</footer>
+
+   
+   </div>
+   
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalPrompt = document.getElementById('modal-prompt');
+    const copyBtn = document.getElementById('copyBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const copySuccess = document.getElementById('copySuccess');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const img = card.querySelector('img').src;
+        const prompt = card.getAttribute('data-prompt');
+        modalImg.src = img;
+        modalPrompt.textContent = prompt;
+        modal.style.display = 'flex';
+        copySuccess.style.display = 'none';
+      });
+    });
+
+    copyBtn.addEventListener('click', () => {
+      const text = modalPrompt.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        copySuccess.style.display = 'inline';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal){
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+
+<script>
+const promptInput = document.getElementById("uniquePromptInput");
+const sliderImages = document.querySelectorAll(".slider-image");
+const generatedImage = document.getElementById("uniqueGeneratedImage");
+const loader = document.getElementById("loader");
+const saveBtn = document.getElementById("uniqueSaveBtn");
+const heightInput = document.getElementById("uniqueHeightInput");
+const generateBtn = document.getElementById("uniqueGenerateBtn");
+
+function generateImage(description = null) {
+  const prompt = description || promptInput.value.trim();
+  const selected = parseInt(heightInput.value) || 500;
+
+  const width = 500;       // lebar selalu fix 500
+  const height = selected; // tinggi ikut pilihan
+
+  if (!prompt) {
+    alert("Please enter a description for the image.");
+    return;
+  }
+
+  loader.style.display = 'block';
+  setTimeout(() => {
+    loader.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 50);
+
+  const seed = Math.floor(Math.random() * 1000000);
+  const generateImageUrl =
+    `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?nologo=true&seed=${seed}&width=${width}&height=${height}`;
+
+  generatedImage.src = generateImageUrl;
+
+
+  // ... lanjut sama seperti kode Anda
+
+
+
+  generatedImage.onload = () => {
+    loader.style.display = 'none';
+    saveBtn.disabled = false;
+    generatedImage.setAttribute("onclick", "saveImage()");
+    generatedImage.style.cursor = "pointer";
+
+    let downloadText = document.getElementById("downloadText");
+    if (!downloadText) {
+      downloadText = document.createElement("p");
+      downloadText.id = "downloadText";
+      generatedImage.parentNode.insertBefore(downloadText, generatedImage.nextSibling);
+    }
+    downloadText.textContent = " Tekan gambar 2 detik klik Download Gambar";
+    downloadText.style.textAlign = "center";
+    downloadText.style.fontSize = "14px";
+    downloadText.style.fontWeight = "bold";
+    downloadText.style.color = "#333";
+    downloadText.style.marginTop = "-5px";
+    downloadText.style.marginBottom = "10px";
+    downloadText.style.display = "block";
+
+    setTimeout(() => {
+      generatedImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+  };
+}
+
+function saveImage() {
+  const link = document.createElement('a');
+  link.href = generatedImage.src;
+  link.download = 'generated_image.png';
+  link.click();
+}
+
+sliderImages.forEach(image => {
+  image.addEventListener("click", function () {
+    const prompt = this.getAttribute("data-prompt");
+    promptInput.value = prompt;
+    generateImage(prompt);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+generateBtn.addEventListener("click", () => generateImage());
+saveBtn.addEventListener("click", saveImage);
+</script>
+
+</div>
+</section>
+<section id="block-image" class="block" tabindex="0">
+  <div class="container">
+<style>
+#block-image iframe {
+  width: 100%;
+  height: 100vh;
+  border: none;
+}
+</style>
+
+    <iframe src="https://tommydev27.github.io/Menu-home/" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- NAVIGASI -->
+<div class="nav-wrap">
+  <button class="nav-btn active" data-target="block-karakter">
+    <i class="fas fa-table"></i><small>Tools</small>
+  </button>
+    <button class="nav-btn" data-target="block-galeri">
+    <i class="fas fa-play"></i><small>Code Run</small>
+  </button>
+  <button class="nav-btn" data-target="block-keyboard">
+    <i class="fas fa-spider"></i><small>Icon</small>
+  </button>
+    <button class="nav-btn" data-target="block-glitch">
+    <i class="fas fa-keyboard"></i><small>keyboard</small>
+  </button>
+  <button class="nav-btn" data-target="block-emoji">
+    <i class="fas fa-images"></i><small>Create img</small>
+  </button>
+    <button class="nav-btn" data-target="block-image">
+    <i class="fas fa-home"></i><small>Home</small>
+  </button>
+</div>
+
+
+</div>
+<script>
+const buttons = document.querySelectorAll('.nav-btn');
+const sections = document.querySelectorAll('.block');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+
+    btn.classList.add('active');
+    const target = document.getElementById(btn.getAttribute('data-target'));
+    if (target) target.classList.add('active');
+  });
+});
+</script>
+
+
+</body>
+</html>
