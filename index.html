@@ -352,6 +352,23 @@ background:#4cafef;
 </head>
 
 <body>
+<script>
+  // Fullscreen otomatis saat klik pertama
+  function goFullScreen() {
+    const el = document.documentElement;
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+  }
+  document.body.addEventListener('click', goFullScreen, {once:true});
+
+  // Service Worker registrasi (opsional tapi buat offline & installable)
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/apps-uxtm/sw.js')
+      .then(() => console.log('Service Worker registered'))
+      .catch(err => console.log('SW registration failed', err));
+  }
+</script>
 
   <!-- HEADER -->
   <div class="header-fixed">
