@@ -35,6 +35,11 @@
     gtag('js', new Date());
     gtag('config', 'G-FK1EY26W82');
   </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+</script>
 
   <style>
     html {
@@ -1521,11 +1526,6 @@ buttons.forEach(btn => {
     }, waktuMuat);
   });
 });
-</script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
-  }
 </script>
 
 </body>
