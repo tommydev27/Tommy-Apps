@@ -808,19 +808,23 @@ document.getElementById("unicodeBadge").addEventListener("click", () => {
 
   function parseHighCodes(text){
     return text
-      .split(',')
+      .split(/[\s,]+/)
       .map(s => s.trim())
       .filter(Boolean)
       .map(s => {
+        // format: U+1F600, u+XXXX, UTF+XXXX
+        if(/^U\+|^u\+|^UTF\+/i.test(s)) s = s.replace(/^U\+|^u\+|^UTF\+/i, '');
         if(/^0x/i.test(s)) s = s.slice(2);
-        const num = parseInt(s,16);
-        return Number.isNaN(num) ? null : num;
+        if(/^[0-9A-Fa-f]+$/.test(s)) return parseInt(s,16);
+        if(/^[0-9]+$/.test(s)) return parseInt(s,10);
+        if(s.length === 1) return s.codePointAt(0);
+        return null;
       })
-      .filter(n => n !== null);
+      .filter(n => n !== null && !Number.isNaN(n));
   }
 
   function padHex(n){ 
-    return '0x' + n.toString(16).toUpperCase().padStart(4,'0'); 
+    return 'U+' + n.toString(16).toUpperCase().padStart(4,'0'); 
   }
 
   function showCharacters(codeList){
@@ -833,94 +837,60 @@ document.getElementById("unicodeBadge").addEventListener("click", () => {
     info.textContent = `Menampilkan ${codeList.length} kode.`;
 
     codeList.forEach(code => {
-      // jika kode high-surrogate (0xD800–0xDBFF)
       if(code >= 0xD800 && code <= 0xDBFF){
         const lowStart = 0xDC00;
         const lowEnd = 0xDFFF;
         const total = lowEnd - lowStart + 1;
         const count = limit === 0 ? total : Math.min(limit, total);
-
         for(let i=0;i<count;i++){
           const low = lowStart + i;
           const ch = String.fromCharCode(code, low);
           buatCard(ch, code, low);
         }
       } else {
-        // karakter tunggal
-        const ch = String.fromCharCode(code);
+        const ch = String.fromCodePoint(code);
         buatCard(ch, code);
       }
     });
-
     if(grid.firstChild) grid.firstChild.scrollIntoView({behavior:'smooth'});
   }
 
-function buatCard(ch, high, low){
-  const card = document.createElement('div');
-  card.className = 'kc-card';
+  function buatCard(ch, high, low){
+    const card = document.createElement('div');
+    card.className = 'kc-card';
 
-  const chEl = document.createElement('div');
-  chEl.className = 'kc-char native-text';
-  chEl.textContent = ch;
+    const chEl = document.createElement('div');
+    chEl.className = 'kc-char native-text';
+    chEl.textContent = ch;
 
-  const copyBtn = document.createElement('button');
-  copyBtn.className='kc-copy';
-  copyBtn.textContent='Salin';
-  copyBtn.title='Klik untuk menyalin karakter ke clipboard';
-  copyBtn.addEventListener('click', ()=>{
-    navigator.clipboard && navigator.clipboard.writeText(ch).then(()=>{
-      copyBtn.textContent='Tersalin';
-      setTimeout(()=>copyBtn.textContent='Salin',800);
-    }).catch(()=>{
-      const ta=document.createElement('textarea');
-      ta.value=ch; document.body.appendChild(ta); ta.select();
-      try{ 
-        document.execCommand('copy'); 
-        copyBtn.textContent='Tersalin'; 
+    const codeInfo = document.createElement('div');
+    codeInfo.className = 'kc-code';
+    codeInfo.textContent = low ? `${padHex(high)} ${padHex(low)}` : padHex(high);
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className='kc-copy';
+    copyBtn.textContent='Salin';
+    copyBtn.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(ch).then(()=>{
+        copyBtn.textContent='Tersalin';
         setTimeout(()=>copyBtn.textContent='Salin',800);
-      }catch(e){ alert('Gagal menyalin') }
-      ta.remove();
+      }).catch(()=>alert('Gagal menyalin'));
     });
-  });
 
-  // tambahkan hanya ikon dan tombol
-  card.appendChild(chEl);
-  card.appendChild(copyBtn);
-  grid.appendChild(card);
-}
-clearBtn.addEventListener('click', ()=>{ 
-  input.value = ''; 
-  grid.innerHTML = '';
-  info.textContent = 'Dikosongkan.';
-});
+    card.appendChild(chEl);
+    card.appendChild(codeInfo);
+    card.appendChild(copyBtn);
+    grid.appendChild(card);
+  }
 
-  runBtn.addEventListener('click', ()=>{ 
-    showCharacters(parseHighCodes(input.value)); 
-  });
-  input.addEventListener('keyup', e=>{ 
-    if(e.key==='Enter') runBtn.click(); 
-  });
-  clearBtn.addEventListener('click', ()=>{ 
-    grid.innerHTML=''; 
-    info.textContent='Dikosongkan.'; 
-  });
+  runBtn.addEventListener('click', ()=>showCharacters(parseHighCodes(input.value)));
+  input.addEventListener('keyup', e=>{ if(e.key==='Enter') runBtn.click(); });
+  clearBtn.addEventListener('click', ()=>{ input.value=''; grid.innerHTML=''; info.textContent='Dikosongkan.'; });
 
-  input.value='0xD80C 0xDD7D';
+  input.value='U+1F600, UTF+1F9D0, 0x1F984';
 })();
-
-// Dark mode tombol
-const darkModeBtn = document.getElementById("darkModeBtn");
-darkModeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  document.querySelectorAll("#kc-grid .kc-code, #kc-grid .kc-char").forEach(el => {
-    if (document.body.classList.contains("dark-mode")) {
-      el.style.color = "#44d13e";
-    } else {
-      el.style.color = "#444";
-    }
-  });
-});
 </script>
+
 </div>
 
 </section>
@@ -1538,13 +1508,11 @@ buttons.forEach(btn => {
     btn.classList.add('active');
     const target = document.getElementById(btn.getAttribute('data-target'));
 
-    // loading muncul hanya jika lambat
     let showLoading = setTimeout(() => {
       loadingOverlay.style.display = 'flex';
     }, 300);
 
-    // simulasi proses muat (ganti pakai fetch/ajax nanti)
-    const waktuMuat = Math.random() * 1000; // kadang cepat, kadang lama
+    const waktuMuat = Math.random() * 1000; 
 
     setTimeout(() => {
       clearTimeout(showLoading);
@@ -1553,6 +1521,11 @@ buttons.forEach(btn => {
     }, waktuMuat);
   });
 });
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
 </script>
 
 </body>
