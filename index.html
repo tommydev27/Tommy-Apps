@@ -39,11 +39,6 @@
     gtag('js', new Date());
     gtag('config', 'G-FK1EY26W82');
   </script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
-  }
-</script>
 
   <style>
     html {
@@ -367,6 +362,14 @@ background:#0083d9;
 </head>
 
 <body>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log('Service Worker registered successfully.'))
+    .catch(err => console.log('Service Worker registration failed:', err));
+}
+</script>
+
 <script>
   // Fullscreen otomatis saat klik pertama
   function goFullScreen() {
